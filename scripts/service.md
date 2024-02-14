@@ -1,6 +1,9 @@
-/etc/systemd/system/kafka.service
 
+## Create this file 
 
+**/etc/systemd/system/kafka.service**
+
+```
 [Unit]
 Description=Apache Kafka
 Requires=network.target
@@ -11,15 +14,23 @@ Type=simple
 ExecStart=/opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/kraft/server.properties
 ExecStop=/opt/kafka/bin/kafka-server-stop.sh
 Restart=on-failure
+```
 
+## reload daemon to take effent
+
+```
 sudo systemd daemon-reload
+```
 
-not enable yet for test purpose  
+but not enable yet for test purpose  
 
-
+```
 sudo systemd enable kafka.service
+```
 
-logs
+## logs
+
+```
 journalctl -f -u kafka
-
+```
 
