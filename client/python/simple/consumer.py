@@ -2,18 +2,20 @@
 Simple kakfa consumer with python kafka library
 """
 
-from kafka import KafkaConsumer
+
 import json
+from kafka import KafkaConsumer
 
 # Read config file
-consumer_config_fd = open('config.json', "r")
+consumer_config_fd = open('config.json', "r", encoding='utf-8')
 consumer_config = json.load(consumer_config_fd)
 
 # Parse configs from file to get desired value
-bootstrap_servers=consumer_config.get('bootstrap_servers')
-security_protocol=consumer_config.get('security_protocol')
+bootstrap_servers = consumer_config.get('bootstrap_servers')
+security_protocol = consumer_config.get('security_protocol')
 
-TOPIC_TO_CONSUME='python_producer_1'
+TOPIC_TO_CONSUME = 'python_producer_1'
+
 
 # To consume latest messages and auto-commit offsets
 consumer = KafkaConsumer(TOPIC_TO_CONSUME,
@@ -22,5 +24,4 @@ consumer = KafkaConsumer(TOPIC_TO_CONSUME,
 
 # Continuously poll for new messages
 for msg in consumer:
-  print("Message: ", msg.value)
-
+    print("Message: ", msg.value)

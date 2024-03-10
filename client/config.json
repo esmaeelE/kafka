@@ -1,5 +1,0 @@
-{
-        "bootstrap_servers":"172.16.5.85:9092",
-        "security_protocol":"PLAINTEXY"
-}
-
